@@ -263,6 +263,17 @@ private:
         doc["state"]["reported"]["temperatureState"] = lastKnownState;
         doc["state"]["reported"]["incubatorMode"] = autoMode ? 1 : 0;
 
+        if (lastKnownState == 0) {
+            light.setState(1);
+            cooler.setState(0);
+        } else if (lastKnownState == 1) {
+            light.setState(0);
+            cooler.setState(0);
+        } else if (lastKnownState == 2) {
+            light.setState(0);
+            cooler.setState(1);
+        }
+
         char buffer[256];
         serializeJson(doc, buffer);
 
