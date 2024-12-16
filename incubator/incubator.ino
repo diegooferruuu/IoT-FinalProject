@@ -166,7 +166,7 @@ public:
             }
         }
 
-        if (temperatureReadCounter >= 15) {
+        if (temperatureReadCounter >= 60) {
             publishTemperatureReading(temperature);
             temperatureReadCounter = 0;
         }
